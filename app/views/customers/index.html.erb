@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+<h3>Entry</h3></br>
+<%= button_to "New customer", new_customer_path, method: :get %>
+<%= button_to "History", history_customers_path, method: :get %>
+</br>
+<%= form_tag(customers_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Customers" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+</br>
+<table>
+  <%= render 'header' %>
+  <div id="customers">  
+    <% @customers.each do |customer| %>
+      <% if customer.out_time.nil? %>
+        <%= render customer %>
+      <% end %>  
+    <% end %>
+  </div>
+</table>
+</br>
+<p> Active Public :- <%= active_public %></p>
+<%=button_to "Detail of the day", detailed_status_customers_path, method: :get %>
+

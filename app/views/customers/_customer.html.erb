@@ -1,0 +1,27 @@
+<div id="<%= dom_id customer %>">
+  <tr>
+    <td><%=customer.name.titleize%></td>         
+    <td><%=customer.address.titleize%></td> 
+    <td><%=customer.contact%></td>
+    <td><%=customer.in_time.strftime('%I:%M %P')%></td>
+    <% if customer.out_time != nil %>
+      <td><%=customer.out_time.strftime('%I:%M %P')%></td>
+    <% end %>
+    <td><%=customer.qty%></td>
+    <td><%=customer.amount%></td>
+    <td><%=customer.refrence%></td>
+    <td><%=customer.message%></td>
+    <td><%=link_to "Edit", edit_customer_path(customer)%></td>
+    <% if customer.out_time.nil? %>
+      <td><%=button_to "Out Entry", entry_out_customer_path(customer), method: :get%> </td>
+    <% else %>
+      <td> <%= button_to "Delete from history", customer, method: :delete %> <td>
+    <%end%>  
+  </tr>
+</div>
+
+<%#if customer.out_time.nil? %>
+       <%# <td> </td> %>
+    <%# else %>
+      <%# <td><%=customer.out_time.strftime('%I:%M %P')</td>  %>
+    <%# end %>

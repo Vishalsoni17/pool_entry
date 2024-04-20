@@ -1,0 +1,53 @@
+<%= form_with(model: customer) do |form| %>
+  <% if customer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+        <% customer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :address, style: "display: block" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :contact, style: "display: block" %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div>
+    <%= form.label :qty, style: "display: block" %>
+    <%= form.number_field :qty %>
+  </div>
+
+  <div>
+    <%= form.label :refrence, style: "display: block" %>
+    <%= form.text_field :refrence %>
+  </div>
+
+  <div>
+    <%= form.label :message, style: "display: block" %>
+    <%= form.text_field :message %>
+  </div>
+
+  <div>
+    <%= form.label :in_time, style: "display: block" %>
+    <%= form.time_field :in_time %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

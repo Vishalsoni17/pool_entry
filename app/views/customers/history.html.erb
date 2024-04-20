@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+<h3>History</h3>
+<%= button_to "Back to customers", customers_path, method: :get  %></br>
+<%= form_tag(history_customers_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Customers" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+</br>
+<table>
+  <%= render 'history_header' %>
+  <div id="customers">  
+    <% @customers.each do |customer| %>
+        <%= render customer %>
+    <% end %>      
+  </div>
+</table>
+
+</br></br></br></br></br>
+<%= button_to "Delete all Customer", delete_all_customers_customers_path, method: :get, class: 'btn-btn-dange'  %></br>
